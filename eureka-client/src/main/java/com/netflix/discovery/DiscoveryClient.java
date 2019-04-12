@@ -411,10 +411,6 @@ public class DiscoveryClient implements EurekaClient {
             throw new RuntimeException("Failed to initialize DiscoveryClient!", e);
         }
 
-        if (clientConfig.shouldFetchRegistry() && !fetchRegistry(false)) {
-            fetchRegistryFromBackup();
-        }
-
         // call and execute the pre registration handler before all background tasks (inc registration) is started
         if (this.preRegistrationHandler != null) {
             this.preRegistrationHandler.beforeRegistration();
